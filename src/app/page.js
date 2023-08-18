@@ -30,7 +30,7 @@ export default function Home() {
       const moneyhubTenantId = "94d46269b0c2b7ecce341c094fdb9a809cd0a49b43a4a8b03f3ec83458a786a0"
       const mercerTenantId = "870cd702192b671e2c95c69d7f303d2d439150ecff50e67ebb672fabb652d85b"
 
-      const response = await fetch(`http://mhserver.dev.127.0.0.1.nip.io/lantern-theme?tenantId=${moneyhubTenantId}`)
+      const response = await fetch(`http://mhserver.dev.127.0.0.1.nip.io/lantern-theme?businessId=${businessId}`)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
@@ -53,15 +53,16 @@ export default function Home() {
       <Box background="white" padding={["m", "m", "l"]}>
         <ContentWrapper>
           <Stack space="xl">
-            <Text as="h3" weight="l" size="l">Whats your name?</Text>
+            <Text as="h3" weight="l" size="l">Enter your name</Text>
             <Formik initialValues={{name: ""}} onReset={() => setName("")} onSubmit={({name}) => {setName(name); setModalIsOpen(true)}}>
               <Form noValidate>
                 <Stack space="l">
                   <Stack space="xl">
                     <TextInput label="Name" id="name" />
                   </Stack>
-                  <Button varient="primary" type="submit">Submit</Button>
-                  <Button varient="secondary" type="reset">Reset</Button>
+                  <Button variant="primary" type="submit">Submit</Button>
+                  <Button variant="secondary" type="reset">Reset</Button>
+                  <Button variant="tertiary" type="button">This does nothing</Button>
                 </Stack>
               </Form>
             </Formik>
